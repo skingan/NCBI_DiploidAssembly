@@ -18,9 +18,9 @@ This repositor contains a collection of scripts to aid you in generating the pla
 12. alt_stop_tail: number of bases at the end of the alternate scaffold not involved in the placement
 
 # Example Placement File
-
+Refer to AthalPlacementFile.txt in this repository.
 
 # nucmer2ncbiPlacement.py
-python script that generates placement file for diploid genome assembly. Detail of placement file are here:
-https://www.ncbi.nlm.nih.gov/assembly/docs/submission/#dat
-"Alternate locus placement file: File describing the chromosome context of alternate locus scaffolds."
+python script that generates placement file for diploid genome assembly. This script operates on a directory containing "coords" files created from nucmer alignments between each haplotig and its associated primary contig. The commands to generate "coords" files can be found within script as commented lines.
+
+# 
