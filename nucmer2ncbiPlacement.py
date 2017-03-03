@@ -37,7 +37,7 @@ print '\t'.join(str(h) for h in header)
 #	p=`echo $h | sed 's/_[0-9]\{3\}//'`					# associated primary contig id
 #	samtools faidx $REF $p | sed 's/|quiver|arrow|arrow//g' > prim.fa	# reference file of primary contig seq
 #	prefix=`echo $h | sed 's/|quiver|arrow|arrow//'`			# prefix for nucmer run
-#	nucmer -maxmatch -l 100 -c 500 prim.fa hap.fa -prefix $prefix		# nucmer run
+#	nucmer -maxmatch prim.fa hap.fa -prefix $prefix				# nucmer run
 #	delta-filter -g $prefix.delta > $prefix.global.delta			# 1-1 global aln without rearragments
 #	show-coords -qTl $prefix.global.delta > $prefix.coords			# coords format, tab delimited, sorted by query (htig), with ref and query lengths
 #done;
