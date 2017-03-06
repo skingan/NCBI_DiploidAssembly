@@ -1,6 +1,0 @@
-/mnt/appslab/projects/2016/sbk_avian/finch_hbird_manuscript/mummer_hbird_ncbi/prim.fa /mnt/appslab/projects/2016/sbk_avian/finch_hbird_manuscript/mummer_hbird_ncbi/hap.fa
-NUCMER
-
-[S1]	[E1]	[S2]	[E2]	[LEN 1]	[LEN 2]	[% IDY]	[LEN R]	[LEN Q]	[TAGS]
-30633	40387	35237	25487	9755	9751	99.51	48929	44931	000850F	000850F_001
-21788	30633	44931	36086	8846	8846	97.88	48929	44931	000850F	000850F_001
