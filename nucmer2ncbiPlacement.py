@@ -60,13 +60,9 @@ for file in fileList:
 	if file_len(file) >= 5:
 		output=['haplotigs','Primary_Assembly', '000000F_000', 'SCAFFOLD', '000000F', '+', 'hstart', 'hstop', 'pstart', 'pstop', '0', '0']
 		d=np.loadtxt(open(file, "rb"), skiprows=4, dtype="str", ndmin=2)
-#		print d[0,:]
-#		print d[:,10]
-#		print d
-#		print d.shape
 		output[2]=d[0,10]	#htig name
 		output[4]=d[0,9]	#pcontig name
-		h=np.array(d[:,[2,3]],dtype=int)
+		h=np.array(d[:,[2,3]],dtype=int) # coax into right data type to use amin
 		p=np.array(d[:,[0,1]],dtype=int)
 		output[6]=np.amin(h) # hstart
 		output[7]=np.amax(h) # hstop
