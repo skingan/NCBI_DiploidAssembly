@@ -13,6 +13,8 @@
 
 # import libraries
 import glob
+import numpy as np
+import subprocess
 
 ###########################################################################################################
 
@@ -42,27 +44,45 @@ print '\t'.join(str(h) for h in header)
 #	show-coords -qTl $prefix.global.delta > $prefix.coords			# coords format, tab delimited, sorted by query (htig), with ref and query lengths
 #done;
 
+def file_len(fname):
+	#http://stackoverflow.com/questions/845058/how-to-get-line-count-cheaply-in-python
+	p = subprocess.Popen(['wc', '-l', fname], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	result, err = p.communicate()
+	if p.returncode != 0:
+		raise IOError(err)
+	return int(result.strip().split()[0])
+
+
+
 fileList = glob.glob('*.coords')
 for file in fileList:
-	output=['haplotigs','Primary Assembly', '000000F_000', 'SCAFFOLD', '000000F', '+', 'hstart', 'hstop', 'pstart', 'pstop', '0', '0']
-	with open(file, 'r') as fin:
-		data=[line.split() for line in fin]
-# haplotigs that align to primary contig
-		if len(data) > 4:
-			output[2]=data[4][10]	#htig name
-			output[4]=data[4][9]	#pcontig name
-			output[6]=data[4][2]	#hstart
-			output[7]=data[-1][3]	#hstop
-			output[8]=data[4][0]	#pstart
-			output[9]=data[-1][1]	#pstop
+# htigs that align to primary
+	if file_len(file) >= 5:
+		output=['haplotigs','Primary_Assembly', '000000F_000', 'SCAFFOLD', '000000F', '+', 'hstart', 'hstop', 'pstart', 'pstop', '0', '0']
+		d=np.loadtxt(open(file, "rb"), skiprows=4, dtype="str", ndmin=2)
+#		print d[0,:]
+#		print d[:,10]
+#		print d
+#		print d.shape
+		output[2]=d[0,10]	#htig name
+		output[4]=d[0,9]	#pcontig name
+		h=np.array(d[:,[2,3]],dtype=int)
+		p=np.array(d[:,[0,1]],dtype=int)
+		output[6]=np.amin(h) # hstart
+		output[7]=np.amax(h) # hstop
+		output[8]=np.amin(p) # pstart
+		output[9]=np.amax(p) # pstop
 # tail regions
-			if int(output[6]) != 1: # if aln doesn't start at 1
-				output[10]=int(output[6])-1 #hstart tail
+		if int(output[6]) != 1: 		# if aln doesn't start at begining of htig
+			output[10]=int(output[6])-1
+		if int(output[7]) != int(d[0,8]): 	# if aln doesn't stop at end of htig
+			output[11]=int(d[0,8])-int(output[7])
+# alignment orientation
+		if np.argmin(p) > np.argmax(p):
+			output[5] = '-'
+# htigs that don't align to primary
+	else:
+		output=['haplotigs','Primary Assembly',file.split('.')[0],'na','na','na','na','na','na','na','na','na']
+# print to stdout
+	print '\t'.join(str(o) for o in output)
 
-			if int(output[7]) != int(data[4][8]): # if aln doesn't end at length
-				output[11]=int(data[4][8])-int(output[7]) #hstop tail
-# haplotigs without alignment to primary
-		else:
-			output=['haplotigs','Primary Assembly',file.split('.')[0],'na','na','na','na','na','na','na','na','na']
-# print output for each haplotig
-		print '\t'.join(str(o) for o in output)
