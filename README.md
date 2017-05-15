@@ -1,5 +1,5 @@
 # Diploid Assembly Submission to NCBI
-NCBI now accepts diploid genome submissions! This repository contains a collection of scripts to aid you in generating the placement file required by NCBI. Refer to the [_Arabidopsis thaliana assembly_] (https://www.ncbi.nlm.nih.gov/assembly/GCA_001753755.2) from [Chin et al. 2016] (https://www.ncbi.nlm.nih.gov/pubmed/27749838) as you prepare your FALCON-Unzip assembly for submission to NCBI.
+NCBI now accepts diploid genome submissions! This repository contains a collection of scripts to aid you in generating the placement file required by NCBI. Refer to the [_Arabidopsis thaliana assembly_](https://www.ncbi.nlm.nih.gov/assembly/GCA_001753755.2) from [Chin et al. 2016](https://www.ncbi.nlm.nih.gov/pubmed/27749838) as you prepare your FALCON-Unzip assembly for submission to NCBI.
 
 
 # Placement File
@@ -19,13 +19,13 @@ The placement file for an unscaffolded assembly has the following fields:
 12. alt_stop_tail: number of bases at the end of the alternate scaffold not involved in the placement
 
 ## Example Placement File
-Refer to [AthalPlacementFile.txt] (https://github.com/skingan/NCBI_DiploidAssembly/blob/master/AthalPlacementFile.txt) in this repository for the _Arabidpsis thaliana_ file.
+Refer to [AthalPlacementFile.txt](https://github.com/skingan/NCBI_DiploidAssembly/blob/master/AthalPlacementFile.txt) in this repository for the _Arabidpsis thaliana_ file.
 
 # Scripts to generate placement files
 Either of the following scripts can be used to generate a placement file.
 
 ## nucmer2ncbiPlacement.py
-Python script written by [Sarah Kingan] (https://github.com/skingan) that generates placement file for diploid genome assembly. This script operates on a directory containing "coords" files created from nucmer alignments between each haplotig and its associated primary contig. The commands to generate "coords" files can be found within script on lines 23-43.
+Python script written by [Sarah Kingan](https://github.com/skingan) that generates placement file for diploid genome assembly. This script operates on a directory containing "coords" files created from nucmer alignments between each haplotig and its associated primary contig. The commands to generate "coords" files can be found within script on lines 23-43.
 
 ## generate_placement.py
-python script written by [Jason Chin] (https://github.com/pb-jchin) that performs nucmer alignments, generates coords file, and created placement file for NCBI submission. Dependencies include [FastaReader.py] (https://github.com/PacificBiosciences/FALCON/blob/master/falcon_kit/FastaReader.py) and [mummer] (http://mummer.sourceforge.net/).
+python script written by [Jason Chin](https://github.com/pb-jchin) that performs nucmer alignments, generates coords file, and created placement file for NCBI submission. Dependencies include [FastaReader.py](https://github.com/PacificBiosciences/FALCON/blob/master/falcon_kit/FastaReader.py) and [mummer](http://mummer.sourceforge.net/).
