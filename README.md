@@ -1,5 +1,5 @@
 # Diploid Assembly Submission to NCBI
-NCBI now accepts diploid genome submissions! This repository contains a collection of scripts to aid you in generating the placement file required by NCBI. Refer to the [_Arabidopsis thaliana assembly_](https://www.ncbi.nlm.nih.gov/assembly/GCA_001753755.2) from [Chin et al. 2016](https://www.ncbi.nlm.nih.gov/pubmed/27749838) as you prepare your FALCON-Unzip assembly for submission to NCBI.
+NCBI now accepts diploid genome submissions! This repository contains a collection of scripts to aid you in generating the placement file required by NCBI. Details can be found [here](https://www.ncbi.nlm.nih.gov/assembly/docs/submission/). Refer to the [_Arabidopsis thaliana assembly_](https://www.ncbi.nlm.nih.gov/assembly/GCA_001753755.2) from [Chin et al. 2016](https://www.ncbi.nlm.nih.gov/pubmed/27749838) as you prepare your FALCON-Unzip assembly for submission to NCBI.
 
 
 # Placement File
